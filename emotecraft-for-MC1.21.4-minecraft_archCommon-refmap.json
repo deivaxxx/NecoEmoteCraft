@@ -1,0 +1,52 @@
+{
+  "mappings": {
+    "io/github/kosmx/emotes/arch/mixin/EmotePlayerMixin": {
+      "<init>": "Lnet/minecraft/class_742;<init>(Lnet/minecraft/class_638;Lcom/mojang/authlib/GameProfile;)V"
+    },
+    "io/github/kosmx/emotes/arch/mixin/EntityTrackerAccessor": {
+      "net/minecraft/server/level/ChunkMap$TrackedEntity": "net/minecraft/class_3898$class_3208",
+      "seenBy": "field_18250:Ljava/util/Set;"
+    },
+    "io/github/kosmx/emotes/arch/mixin/KeyEventMixin": {
+      "click": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
+    },
+    "io/github/kosmx/emotes/arch/mixin/ServerChunkCacheAccessor": {
+      "entityMap": "field_18242:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;"
+    },
+    "io/github/kosmx/emotes/arch/mixin/ServerCommonPacketListenerAccessor": {
+      "connection": "field_45013:Lnet/minecraft/class_2535;"
+    },
+    "io/github/kosmx/emotes/arch/mixin/ServerPlayTrackerMixin": {
+      "addPairing": "Lnet/minecraft/class_3231;method_18760(Lnet/minecraft/class_3222;)V"
+    },
+    "io/github/kosmx/emotes/arch/mixin/ServerPlayerMixin": {
+      "updatePlayerPose": "Lnet/minecraft/class_1657;method_7318()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "io/github/kosmx/emotes/arch/mixin/EmotePlayerMixin": {
+        "<init>": "Lnet/minecraft/class_742;<init>(Lnet/minecraft/class_638;Lcom/mojang/authlib/GameProfile;)V"
+      },
+      "io/github/kosmx/emotes/arch/mixin/EntityTrackerAccessor": {
+        "net/minecraft/server/level/ChunkMap$TrackedEntity": "net/minecraft/class_3898$class_3208",
+        "seenBy": "field_18250:Ljava/util/Set;"
+      },
+      "io/github/kosmx/emotes/arch/mixin/KeyEventMixin": {
+        "click": "Lnet/minecraft/class_304;method_1420(Lnet/minecraft/class_3675$class_306;)V"
+      },
+      "io/github/kosmx/emotes/arch/mixin/ServerChunkCacheAccessor": {
+        "entityMap": "field_18242:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;"
+      },
+      "io/github/kosmx/emotes/arch/mixin/ServerCommonPacketListenerAccessor": {
+        "connection": "field_45013:Lnet/minecraft/class_2535;"
+      },
+      "io/github/kosmx/emotes/arch/mixin/ServerPlayTrackerMixin": {
+        "addPairing": "Lnet/minecraft/class_3231;method_18760(Lnet/minecraft/class_3222;)V"
+      },
+      "io/github/kosmx/emotes/arch/mixin/ServerPlayerMixin": {
+        "updatePlayerPose": "Lnet/minecraft/class_1657;method_7318()V"
+      }
+    }
+  }
+}
