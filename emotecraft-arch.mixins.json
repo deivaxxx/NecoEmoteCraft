@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.kosmx.emotes.arch.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "plugin": "io.github.kosmx.emotes.mixin.EmotesMixinPlugin",
+  "mixins": [
+    "ConnectionHandlerMixin",
+    "EntityTrackerAccessor",
+    "ServerChunkCacheAccessor",
+    "ServerCommonPacketListenerAccessor",
+    "ServerPlayerMixin",
+    "ServerPlayNetworkMixin",
+    "ServerPlayTrackerMixin"
+  ],
+  "client": [
+    "EmotePlayerMixin",
+    "KeyEventMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "emotecraft-for-MC1.21.1-minecraft_archCommon-refmap.json"
+}
