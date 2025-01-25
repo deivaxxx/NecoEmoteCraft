@@ -1,0 +1,102 @@
+plugins {
+    id "maven-publish"
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "com.modrinth.minotaur"
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+    minecraft = project.minecraft_version
+}
+
+loom {
+    accessWidenerPath = project(":${project.module_name}:archCommon").loom.accessWidenerPath
+}
+
+project.archivesBaseName = "${project.archives_base_name}-fabric-${project.version_base}+mc${project.minecraft_version}"
+
+configurations {
+    compileModule
+    common
+    commonModule
+
+    common.extendsFrom commonModule
+    compileModule.extendsFrom commonModule
+
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+
+dependencies {
+    commonModule(project(":executor")) {transitive false}
+    commonModule(project(":emotesAPI")) {transitive false}
+    commonModule(project(":emotesServer")) {transitive false}
+    commonModule(project(":emotesAssets")) {transitive false}
+
+    common(project(path: ":${project.module_name}:archCommon", configuration: "namedElements")) {
+        transitive false
+    }
+
+    compileModule(project(path: ":${project.module_name}:archCommon", configuration: "transformProductionFabric")) {
+        transitive false
+    }
+
+    modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
+
+    include modImplementation("io.github.kosmx.bendy-lib:bendy-lib-fabric:${project.bendylib_version}")
+    include modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim}")
+}
+
+processResources {
+    inputs.property "version", project.version_base
+    inputs.property "description", rootProject.mod_description
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version_base, "description": rootProject.mod_description
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+shadowJar {
+    configurations = [project.configurations.compileModule]
+}
+
+remapJar {
+    injectAccessWidener = true
+    dependsOn shadowJar
+    input.set shadowJar.archiveFile
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(jar) {
+                builtBy remapJar
+            }
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
