@@ -21,5 +21,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "emotecraft-for-MC1.21.1-minecraft_archCommon-refmap.json"
+  "refmap": "emotecraft-for-MC1.21.4-minecraft_archCommon-refmap.json"
 }
