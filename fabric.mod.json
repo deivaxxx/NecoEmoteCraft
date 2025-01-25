@@ -34,9 +34,9 @@
     "emotecraft-arch.mixins.json"
   ],
   "depends": {
-    "fabricloader": "\u003e\u003d0.14.11",
+    "fabricloader": "\u003e\u003d0.16.9",
     "fabric-api": "*",
-    "minecraft": "\u003e\u003d1.19.3",
+    "minecraft": "\u003e\u003d1.21.4",
     "playeranimator": "\u003e\u003d2.0.0+1.21.4"
   },
   "custom": {
